@@ -1,12 +1,12 @@
 # GRID LAYOUT
 
-### Introducción:
+## Introducción:
 
 La definición habitual de Grid Layout, es que es un sistema de rejilla en dos dimensiones, y que se suele comparar con FlexBox que se trabaja en una dimensión. En Flex Box se les dice a los items que hacer en el eje horizontal y en el vertical, pero no se manejan ambos ejes al mismo tiempo. En ese caso los items que no caben en una linea pasan a la de abajo, lo que no quiere decir que en realidad se estén controlando.
 
 Con Grid sí hacemos eso, tenemos el control de ambas dimensiones. Podemos determinar la posición tanto vertical como horizontal de un item.
 
-Surgen una serie de preguntas:
+Surgen una serie de cuestiones:
 
 - Voy a poder colocar los items Dónde quiera, pero habrá items que se coloquen solos.
 - Se puede hacer lo mismo de muchas formas, pero no todas hace exactamente lo mismo, puesto que determinadas propiedades se comportan de forma distinta si el item no tiene sitio por ejemplo.
@@ -18,8 +18,73 @@ la colocación de los items es muy libre, no es una tabla al uso.
 ¿Se puede usar con cualquier framework?
 En principio sí, porque es una especificación de CSS.
 
-### Conceptos básicos:
+## Conceptos básicos:
 
-![Grid Basis](images/grid_basis.png)
+<img src="images/grid_basis.png" alt="Grid Basis" style="display: block; width: 500px;margin-left: auto;margin-right: auto;"/>
 
-La base de Grid son las líneas, horizontales para las filas, y verticales para las columnas.
+
+La base de Grid son las líneas, horizontales para las filas, y verticales para las columnas. Comienzan en la linea 1.
+
+El espacio entre dos líneas es track, es decir, el espacio entre dos líneas horizontales son las filas, y el tack entre dos líneas verticales una columna. 
+
+Una celda es el espacio delimitado por 4 lineas. 
+
+Un area es un espacio en el que hay varias celdas.
+
+Se puede combinar sin problema con flexbox.
+
+A la hora de tener un diseño delante tenemos que empezar a saber perféctamente donde aplicar el grid y dónde el flexbox.
+
+El grid area tiene que tener una base y una altura, es decir rectangular o cuadrado. 
+
+Se pueden montar grids dentro de otros sin problema.
+
+## display: grid
+
+En el momento que ponemos en la propiedad *display* formato grid, pasa a ser un grid:
+```css
+body {
+    display: grid;
+}
+.main {
+    display: inline-grid; 
+}
+```
+Y sus **hijos directos**  pasan a ser **grid items**
+
+## Definiendo tracks:
+
+Hay que crear el grid explícitamente, diciéndole cuantas tracks va a tener horizontal y verticalmente. Hay muchas sintaxis para hacer esto, pero vamos a ver las más comunes. 
+
+En este caso iremos al ejemplo 2. A parte de poner ```display: grid``` hay que especificar concretamente el número de filas y columnas con las siguientes propiedades:
+
+```css
+.grid {
+    display: grid;
+    grid-template-columns: 200px 200px 200px; /* expecifíca la cantidad de tracks verticales (columnas) y su ancho */
+    grid-template-rows: 150px 150px 150px 150px; /* expecifica la cantidad de tracks horizontales (filas) y su alto */
+}
+```
+
+Para poder separar los diferentes tracks tanto vertical como horizontalmente, tenemos la propiedad *gap* que será especificada tanto horizontal como verticalmente:
+
+```css
+.grid {
+    display: grid;
+    grid-template-columns: 200px 200px 200px; 
+    grid-template-rows: 150px 150px 150px 150px; 
+    grid-column-gap: 1rem; /* Espacios entre track verticales */
+    grid-row-gap: .5rem;
+}
+```
+
+Introducimos ahora el concepto de *fr* que significa *fraction unit*. Con esta unidad, lo que hacemos es decirle que cada track ocupe una fracción (o varias) del espacio disponible. Con esto conseguimos que cada track se ajuste al espacio disponible. De esta simple forma, hacemos elásticas las celdas de nuestro grid:
+
+```css
+.grid {
+    display: grid;
+    grid-column-gap: 1rem;
+    grid-row-gap: .5rem;
+    grid-template-columns: 1fr 2fr 1fr; /* Con esto damos 1 fracción a la primera y ultima columna y dos fracciones a la segunda.*/
+}
+```
