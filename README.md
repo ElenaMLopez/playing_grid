@@ -5,5 +5,7 @@ En este curso se abordan los fundamentos de esta maravillosa herramienta, que ca
 
 Se recomienda utilizar como navegador firefox o firefox developer edition, puesto que trae una herramienta de análisis muy completa para grid. 
 
+Al curso he añadido cosas propias para poder jugar un poco con esta especificación tan increible. Estas son señaladas con un $$ en comentarios.
+
 =)
 

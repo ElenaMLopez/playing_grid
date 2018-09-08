@@ -21,14 +21,25 @@ body {
     padding: 1.5rem;
     border-radius: 1rem;
 }
+.item-extra {
+    background-color: rgb(75, 204, 0)!important; /* $$: Se utiliza !important por la especifidad que dan las pseudo clases nth-child de arriba */
+}
 
 /** De aquí a abajo es donde empieza la programación de grid **/
 
 .grid {
+    min-height: 200vh; /* Damos un alto al contenedor para ver las propiedades de las filas */
     display: grid;
-    /*grid-template-columns: 200px 200px 200px; /* comentamos para ver el fr */
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 150px 150px 150px 150px; 
     grid-column-gap: 1rem; /* Espacios entre track verticales */
     grid-row-gap: .5rem;
+
+    /*grid-template-columns: 200px 200px 200px; /* comentamos para ver el fr */
+    /* grid-template-columns: 1fr 2fr 1fr; */
+    /* grid-template-columns: 20% 1fr; */
+    grid-template-columns: 200px 1fr 1fr; 
+    /* grid-template-rows: 150px 150px 150px 150px;  */
+    grid-template-rows: 10rem 1fr 1fr 1fr;
+    
+    /* Gestión de contenido dinámico */
+    grid-auto-rows: 160px; /* Cada nueva fila que aparezca si aumentan los elementos tendrá ese alto */
 }

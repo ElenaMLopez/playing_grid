@@ -1,0 +1,30 @@
+body {
+    font-size: 3rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgba(0,0,0,.2);
+    color: white;
+}
+.grid-item {
+    padding: 1.5rem;
+    border-radius: 1rem;
+}
+
+.grid-item:nth-child(2n) {
+    background-color: darkgreen;
+}
+
+.grid-item:nth-child(2n+1) {
+    background-color: forestgreen;
+}
+
+.grid {
+    padding: 1em;
+}
+
+
+.item-extra {
+    background-color: rgb(75, 204, 0)!important; /* $$: Se utiliza !important por la especifidad que dan las pseudo clases nth-child de arriba */
+}
+
+/** De aquí a abajo es donde empieza la programación de grid **/
+
